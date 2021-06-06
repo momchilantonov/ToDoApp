@@ -55,5 +55,21 @@
 </style>
 <body>
     <h1>My Todo List</h1>
+    {% if todos %}
+        <div class="container">
+            {% for todo in todos %}
+            <div class="todos">
+                <p>{{ todo.title }}</p>
+                <div class="description">{{ todo.description }}</div>
+                {% if todo.is_done %}
+                    <div class="done">DONE</div>
+                {% else %}
+                    <div class="open">NOT DONE</div>
+                {% endif %}
+            </div>
+            {% endfor %}
+    {% else %}
+        <h2>No TODOS</h2>
+    {% endif %}
 </body>
 </html>
