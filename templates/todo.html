@@ -61,7 +61,7 @@
             <div class="todos">
                 <p>{{ todo.title }}</p>
                 <div class="description">{{ todo.description }}</div>
-                {% if todo.is_done %}
+                {% if todo.state %}
                     <div class="done">DONE</div>
                 {% else %}
                     <div class="open">NOT DONE</div>
