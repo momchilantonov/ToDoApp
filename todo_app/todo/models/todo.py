@@ -1,6 +1,7 @@
 from django.db import models
 from todo_app.todo.models.person import Person
 from todo_app.todo.models.category import Category
+from todo_app.todo.models.priority import Priority
 
 
 class Todo(models.Model):
@@ -20,6 +21,11 @@ class Todo(models.Model):
     )
     state = models.BooleanField(
         default=False,
+    )
+    priority = models.ForeignKey(
+        Priority,
+        on_delete=models.CASCADE,
+        null=True,
     )
 
     def __str__(self):
