@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from todo_app.todo.models.person import Person
 from todo_app.todo.models.category import Category
 from todo_app.todo.models.priority import Priority
@@ -9,6 +10,12 @@ class Todo(models.Model):
         max_length=20,
     )
     description = models.TextField()
+    state = models.BooleanField(
+        default=False,
+    )
+    due_date = models.DateField(
+        default=timezone.now
+    )
     responsible_person = models.ForeignKey(
         Person,
         on_delete=models.CASCADE,
@@ -19,9 +26,7 @@ class Todo(models.Model):
         on_delete=models.CASCADE,
         null=True,
     )
-    state = models.BooleanField(
-        default=False,
-    )
+    
     priority = models.ForeignKey(
         Priority,
         on_delete=models.CASCADE,
