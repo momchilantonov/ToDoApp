@@ -3,73 +3,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo App</title>
+    <style>
+        h1 {
+            margin: 5px;
+            text-align: center;
+            padding: 5px;
+        }
+
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+        }
+
+        div.done {
+            color: green;
+            font-weight: bold;
+        }
+
+        div.open {
+            color: red;
+            font-weight: bold;
+        }
+
+        div.todo {
+            display: block;
+            background: white;
+            border: 2px solid white;
+            border-radius: 10px;
+            margin: 5px;
+            text-align: center;
+        }
+
+        div.todo p {
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        div.todo div.description {
+            padding: 10px;
+        }
+
+        div.container {
+            background: greenyellow;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            padding: 10px;
+        }
+    </style>
 </head>
-<style>
-    h1 {
-        margin: 5px;
-        text-align: center;
-        padding: 5px;
-    }
-
-    h2 {
-        text-align: center;
-        text-decoration: underline;
-    }
-
-    div.done {
-        color: green;
-        font-weight: bold;
-    }
-
-    div.open {
-        color: red;
-        font-weight: bold;
-    }
-
-    div.todo {
-        display: block;
-        background: white;
-        border: 2px solid white;
-        border-radius: 10px;
-        margin: 5px;
-        text-align: center;
-    }
-
-    div.todo p {
-        font-size: 20px;
-        font-weight: bold;
-        text-decoration: underline;
-    }
-
-    div.todo div.description {
-        padding: 10px;
-    }
-
-    div.container {
-        background: greenyellow;
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-        padding: 10px;
-    }
-</style>
 <body>
-    <h1>My Todo List</h1>
-    {% if todos %}
-        <div class="container">
-            {% for todo in todos %}
-            <div class="todos">
-                <p>{{ todo.title }}</p>
-                <div class="description">{{ todo.description }}</div>
+<h1>My Todo List</h1>
+<form method="POST" action="/add/">
+    {% csrf_token %}
+    <label>
+        Title:
+        <input type="text" name="title"/>
+    </label>
+    <label>
+        Description
+        <textarea name="description"></textarea>
+    </label>
+    <label>
+        Person
+        <input type="text" name="responsible_person"/>
+    </label>
+    <button>Create</button>
+</form>
+{% if todos %}
+    <div class="container">
+        {% for todo in todos %}
+        <div class="todo">
+            <p>{{ todo.title }}</p>
+            <div class="description">{{ todo.description }}</div>
+            <form method="POST" action="/change-state/{{ todo.id }}">
+                {% csrf_token %}
                 {% if todo.state %}
                     <div class="done">DONE</div>
+                    <input type="hidden" name="state" value="false"/>
+                    <button>Change State</button>
                 {% else %}
                     <div class="open">NOT DONE</div>
+                    <input type="hidden" name="state" value="true"/>
+                    <button>Change State</button>
                 {% endif %}
-            </div>
-            {% endfor %}
-    {% else %}
-        <h2>No TODOS</h2>
-    {% endif %}
+            </form>
+        </div>
+        {% endfor %}
+{% else %}
+    <h2>No TODOS</h2>
+{% endif %}
 </body>
 </html>

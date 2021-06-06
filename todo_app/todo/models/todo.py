@@ -9,7 +9,10 @@ class Todo(models.Model):
     title = models.CharField(
         max_length=20,
     )
-    description = models.TextField()
+    description = models.TextField(
+        null=True,
+        blank=True,
+    )
     state = models.BooleanField(
         default=False,
     )
