@@ -1,0 +1,16 @@
+<form method="POST" action="/add/">
+    {% csrf_token %}
+    <label>
+        Title:
+        <input type="text" name="title" size="10"/>
+    </label>
+    <label>
+        Description
+        <textarea name="description" cols="4" rows="10"></textarea>
+    </label>
+    <label>
+        Person
+        <input type="text" name="responsible_person"/>
+    </label>
+    <button>Create</button>
+</form>
