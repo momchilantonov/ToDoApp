@@ -130,13 +130,35 @@ def edit_page(req, pk):
 
 
 # Edit todo
-def edid_todo(req):
-    pass
+def edid_todo(req, pk):
+    todo = Todo.objects.get(pk=pk)
+    todo.title = req.POST["title"]
+    todo.description = req.POST["description"]
+    todo.due_date = req.POST["due_date"]
+    req_category = req.POST["category"]
+    req_priority = req.POST["priority"]
+    req_responsible_person = req.POST["responsible_person"]
 
+    category = Category.objects.filter(name=req_category).first()
+    priority = Priority.objects.filter(name=req_priority).first()
+    responsible_person = Person.objects.filter(name=req_responsible_person).first()
 
-# Change todo page
-def change_page(req):
-    pass
+    if not category:
+        category = Category(name=req_category)
+        category.save()
+
+    if not priority:
+        priority = Priority(name=req_priority)
+        priority.save()
+
+    if not responsible_person:
+        responsible_person = Person(name=req_responsible_person)
+        responsible_person.save()
+
+    todo.save()
+
+    return redirect("/")
+
 
 # Change the state of a todo
 def change_state(req, pk):
