@@ -53,7 +53,14 @@ def done_todos(req):
 
 # Create new todo page
 def create_page(req):
-    pass
+    context = {
+        "todos": Todo.objects.all(),
+        "categories": Category.objects.all(),
+        "priorities": Priority.objects.all(),
+        "responsible_persons": Person.objects.all(),
+    }
+
+    return render(req, "create_todo.html", context)
 
 
 # Create new todo
@@ -94,19 +101,32 @@ def create_todo(req):
     return redirect("/")
 
 
-# Delate todo page
-def delate_page(req):
-    pass
+# Delete todo page
+def delete_page(req, pk):
+    todo = Todo.objects.get(pk=pk)
+    context = {
+        "todo": todo
+    }
+
+    return render(req, "delete_todo.html", context)
 
 
-# Delate todo
-def delate_todo(req):
-    pass
+# Delete todo
+def delete_todo(req, pk):
+    todo = Todo.objects.get(pk=pk)
+    todo.delete()
+
+    return redirect("/")
 
 
 # Edit todo page
-def edit_page(req):
-    pass
+def edit_page(req, pk):
+    todo = Todo.objects.get(pk=pk)
+    context = {
+        "todo": todo
+    }
+
+    return render(req, "edit_todo.html", context)
 
 
 # Edit todo
