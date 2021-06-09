@@ -1,13 +1,17 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% block title %}Today's tasks{% endblock %}
 
-<h1>Today's remainder</h1>
+{% block content %}
     {% if todos %}
         <div class="container">
             {% for todo in todos %}
-                <div class="todo">
-                    <p>{{ todo.title }}</p>
-                    <div class="description">{{ todo.description }}</div>
+
+                <div class="row">
+                  <div class="col-lg-12">Title<br>{{ todo.title }}</div>
                 </div>
             {% endfor %}
-    {% endif %}
         </div>
+    {% else %}
+        <h5>Nothibg to show</h5>
+    {% endif %}
+{% endblock %}

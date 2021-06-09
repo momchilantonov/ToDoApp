@@ -3,7 +3,7 @@ from todo_app.todo.views import all_todos, change_state, done_todos, index, crea
 
 
 urlpatterns = [
-    path("", index),
+    path("", index, name="today tasks"),
     path("all/", all_todos),
     path("done/", done_todos),
     path("not-done/", not_done_todos),

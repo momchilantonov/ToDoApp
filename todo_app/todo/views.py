@@ -10,7 +10,7 @@ from todo_app.todo.models.category import Category
 # Show all todos with state "NOT DONE" and due_date=today"
 def index(req):
     now = datetime.now()
-    todos = Todo.objects.filter(state=False, due_date=now)
+    todos = Todo.objects.filter(state=False, due_date=now).order_by("due_date")
     context = {
         "todos": todos,
     }
