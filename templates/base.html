@@ -1,7 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>TODO APP</title>
+    <title>
+      TODO APP
+      {% block title %}
+      {% endblock %}
+    </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,7 +16,7 @@
     <!-- Style -->
     <style>
         div.jumbotron {
-            background-image: url("todo.png");
+            background-image: url("./todo.png");
             background-repeat: no-repeat;
             background-color: transparent;
             background-position: 50% 50%;
@@ -24,14 +28,19 @@
             width: auto;
             justify-content:center;
         }
-        div.navbar-nav > .active > a {
+        .active {
           color: black;
-          font-family: "Bookman, URW Bookman L, serif";
+          
+        }
+        a:link {
+          text-decoration: none;
+        }
+        a:hover {
+          color: crimson;
         }
     </style>
   </head>
   <body>
-      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -41,14 +50,21 @@
     <!-- My Body -->
     <div class="jumbotron text-center"></div>
 
-    <nav class="navbar navbar-expand navbar-dark bg-success">
-        <div class="nav navbar-nav">
-            <a class="nav-item nav-link" style="color: black; font-family: Bookman, URW Bookman L, serif" href="#">Тoday's tasks</a>
-            <a class="nav-item nav-link" style="color: black; font-family: Bookman, URW Bookman L, serif" href="#">All tasks</a>
-            <a class="nav-item nav-link" style="color: black; font-family: Bookman, URW Bookman L, serif" href="#">Unfinished tasks</a>
-            <a class="nav-item nav-link" style="color: black; font-family: Bookman, URW Bookman L, serif" href="#">Finished tasks</a>
-            <a class="nav-item nav-link" style="color: black; font-family: Bookman, URW Bookman L, serif" href="#">Create task</a>
+    <nav class="navbar navbar-expand navbar-light bg-success">
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a class="active" href="#">Тoday's tasks &emsp;</a>
+              <a class="active" href="#">All tasks &emsp;</a>
+              <a class="active" href="#">Unfinished tasks &emsp;</a>
+              <a class="active" href="#">Finished tasks &emsp;</a>
+              <a class="active" href="#">Create task</a>
+            </li>
+          </ul>
         </div>
     </nav>
+    {% block content %}
+    {% endblock %}
   </body>
+ 
 </html>
