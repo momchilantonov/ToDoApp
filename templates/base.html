@@ -15,19 +15,19 @@
             background-image: url("todo.png");
             background-repeat: no-repeat;
             background-color: transparent;
-            background-position: 0% 50%;
-            color: rgb(8, 6, 7);
-            border: 5px groove rgb(16, 214, 16);
-            border-radius: 10px;
-            margin: 0px auto;
-            
-            height: 170px;
+            background-position: 50% 50%;
+            border:none;
+            border-radius:none;
+            margin: 40px;
+            padding: 5px;
+            height:150px;
+            width: auto;
             justify-content:center;
         }
-        div.h1 {
-            text-align: center;
+        div.navbar-nav > .active > a {
+          color: black;
+          font-family: "Bookman, URW Bookman L, serif";
         }
-
     </style>
   </head>
   <body>
@@ -39,9 +39,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <!-- My Body -->
-    <div class="jumbotron text-center">
-        <h1>Don't forget TODO it!</h1>
-        <p>Your remainder application</p>
-    </div>
+    <div class="jumbotron text-center"></div>
+
+    <nav class="navbar navbar-expand navbar-dark bg-success">
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link" style="color: black; font-family: Bookman, URW Bookman L, serif" href="#">Тoday's tasks</a>
+            <a class="nav-item nav-link" style="color: black; font-family: Bookman, URW Bookman L, serif" href="#">All tasks</a>
+            <a class="nav-item nav-link" style="color: black; font-family: Bookman, URW Bookman L, serif" href="#">Unfinished tasks</a>
+            <a class="nav-item nav-link" style="color: black; font-family: Bookman, URW Bookman L, serif" href="#">Finished tasks</a>
+            <a class="nav-item nav-link" style="color: black; font-family: Bookman, URW Bookman L, serif" href="#">Create task</a>
+        </div>
+    </nav>
   </body>
 </html>
