@@ -2,16 +2,43 @@
 {% block title %}Today's tasks{% endblock %}
 
 {% block content %}
+</br>
+<center><h3><b>Today's tasks</b></h3></center>
     {% if todos %}
-        <div class="container">
-            {% for todo in todos %}
-
-                <div class="row">
-                  <div class="col-lg-12">Title<br>{{ todo.title }}</div>
+        {% for todo in todos %}
+            <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                                <div class="card">
+                                    <center><u><b>{{todo.title}}</b></u></center>
+                                    <hr/>
+                                    <b>Description:</b></br>{{ todo.description }}
+                                    <hr/>
+                                    <b>Responsible:</b></br>{{ todo.responsible_person }}
+                                    <hr/>
+                                    <b>Category:</b></br>{{ todo.category }}
+                                    <hr/>
+                                    <b>Priority:</b></br>{{ todo.priority }}
+                                    <hr/>
+                                    <b>Due Date:</b></br>{{ todo.due_date }}
+                                    <hr/>
+                                    {% if todo.state %}
+                                        <b>Status:</b></br>Done
+                                    {% else %}
+                                        <b>Status:</b></br>Not Done
+                                    {% endif %}
+                                </div>
+                        </div>
+                    </div> 
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     {% else %}
-        <h5>Nothibg to show</h5>
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                    <div class="card">
+                        <center><h5>No tasks for today!</br>Create new task?</h5></center>
+                        <a class="page-link" href="#"> + Add New</a>
     {% endif %}
 {% endblock %}

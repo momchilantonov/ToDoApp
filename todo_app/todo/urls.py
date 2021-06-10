@@ -4,7 +4,7 @@ from todo_app.todo.views import all_todos, change_state, done_todos, index, crea
 
 urlpatterns = [
     path("", index, name="today tasks"),
-    path("all/", all_todos),
+    path("all/", all_todos, name="all tasks"),
     path("done/", done_todos),
     path("not-done/", not_done_todos),
     path("change-state/<int:pk>", change_state)

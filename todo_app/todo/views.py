@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.utils.timezone import make_aware
 from datetime import datetime
 from todo_app.todo.models.todo import Todo
 from todo_app.todo.models.person import Person
@@ -6,11 +7,18 @@ from todo_app.todo.models.priority import Priority
 from todo_app.todo.models.category import Category
 
 
+# Config the time for Django
+naive_datetime = datetime.today()
+current_time = make_aware(naive_datetime)
+naive_datetime = naive_datetime.replace(hour=23, minute=59, second=59)
+end_time = make_aware(naive_datetime)
+
+
 # Home page
 # Show all todos with state "NOT DONE" and due_date=today"
 def index(req):
-    now = datetime.now()
-    todos = Todo.objects.filter(state=False, due_date=now).order_by("due_date")
+    today = datetime.today()
+    todos = Todo.objects.filter(due_date__gte=current_time, due_date__lte=end_time, state=False)
     context = {
         "todos": todos,
     }
