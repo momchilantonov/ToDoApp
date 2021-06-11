@@ -7,6 +7,12 @@ from todo_app.todo.models.priority import Priority
 from todo_app.todo.models.category import Category
 
 
+
+# Login (landing) page
+def login(req):
+    return render(req, "login.html")
+
+
 # Config the time for Django
 naive_datetime = datetime.today()
 current_time = make_aware(naive_datetime)
@@ -16,14 +22,13 @@ end_time = make_aware(naive_datetime)
 
 # Home page
 # Show all todos with state "NOT DONE" and due_date=today"
-def index(req):
-    today = datetime.today()
+def todays_todos(req):
     todos = Todo.objects.filter(due_date__gte=current_time, due_date__lte=end_time, state=False)
     context = {
         "todos": todos,
     }
 
-    return render(req, "index.html", context)
+    return render(req, "todays_todos.html", context)
 
 
 # All todos page
