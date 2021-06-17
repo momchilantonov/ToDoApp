@@ -10,19 +10,19 @@
                     <div class="row">
                         <div class="col-lg-6">
                                 <div class="card">
-                                    <center><u><b>{{todo.title}}</b></u></center>
+                                    <center><u><b>{{form.title}}</b></u></center>
                                     <hr/>
-                                    <b>Description:</b></br>{{ todo.description }}
+                                    <b>Description:</b></br>{{ form.description }}
                                     <hr/>
-                                    <b>Responsible:</b></br>{{ todo.responsible_person }}
+                                    <b>Responsible:</b></br>{{ form.responsible_person }}
                                     <hr/>
-                                    <b>Category:</b></br>{{ todo.category }}
+                                    <b>Category:</b></br>{{ form.category }}
                                     <hr/>
-                                    <b>Priority:</b></br>{{ todo.priority }}
+                                    <b>Priority:</b></br>{{ form.priority }}
                                     <hr/>
-                                    <b>Due Date:</b></br>{{ todo.due_date }}
+                                    <b>Due Date:</b></br>{{ form.due_date }}
                                     <hr/>
-                                    {% if todo.state %}
+                                    {% if form.state %}
                                         <b>Status:</b></br>Done
                                     {% else %}
                                         <b>Status:</b></br>Not Done

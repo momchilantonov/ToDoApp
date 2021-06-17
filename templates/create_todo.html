@@ -1,6 +1,32 @@
-<form method="POST" action="{ url 'create todo'}">
+{% extends 'base.html' %}
+{% block title %}Create new task{% endblock %}
 
-    {{ create_form }}
-    <button type="button" class="btn btn-primary">Create</button>
-
-</form>
+{% block content %}
+</br>
+<center><h3><b>Create new task</b></h3></center>
+    <b4-form method='POST'>
+        <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                            <div class="card">
+                                <b>Title:</b></br>{{ form.title }}
+                                <hr/>
+                                <b>Description:</b></br>{{ form.description }}
+                                <hr/>
+                                <b>Responsible:</b></br>{{ form.responsible_person }}
+                                <hr/>
+                                <b>Category:</b></br>{{ form.category }}
+                                <hr/>
+                                <b>Priority:</b></br>{{ form.priority }}
+                                <hr/>
+                                <b>Due Date:</b></br>{{ form.due_date }}
+                                <hr/>
+                                <button type="submit" class="btn btn-secondary">create</button>
+                            </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        
+    </b4-form>
+{% endblock %}

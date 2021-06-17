@@ -111,11 +111,11 @@
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li>
-            <a class="active" href="{% url 'today tasks' %}">Тoday's tasks &emsp;</a>
-            <a class="active" href="{% url 'all tasks' %}">All tasks &emsp;</a>
+            <a class="active" href="{% url 'index' %}">Тoday's tasks &emsp;</a>
+            <a class="active" href="#">All tasks &emsp;</a>
             <a class="active" href="#">Unfinished tasks &emsp;</a>
             <a class="active" href="#">Finished tasks &emsp;</a>
-            <a class="active" href="#">Create task</a>
+            <a class="active" href="{% url 'create_todo' %}">Create task</a>
           </li>
         </ul>
       </div>
