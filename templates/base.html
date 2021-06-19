@@ -16,7 +16,7 @@
         <ul class="navbar-nav me-auto">
           <legend>TODOS APP</legend>
           <li class="nav-item">
-            <a class="nav-link" href="#">Today's tasks</a>
+            <a class="nav-link" href="{% url 'index' %}">Today's tasks</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">All tasks</a>
@@ -28,7 +28,7 @@
             <a class="nav-link" href="#">Not Done tasks</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Create task</a>
+            <a class="nav-link" href="{% url 'create_todo' %}">Create task</a>
           </li>
         </ul>
       </div>

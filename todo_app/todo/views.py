@@ -29,11 +29,10 @@ naive_datetime = naive_datetime.replace(hour=23, minute=59, second=59)
 end_time = make_aware(naive_datetime)
 
 
-# Show all todos with due_date=today"
+# Home page. Show all todos with due_date=today"
 def index(req):
     todos = Todo.objects.filter(
         due_date__gte=current_time, due_date__lte=end_time)
-    # todos = Todo.objects.all()
     temp = "index.html"
     context = {
         "todos": todos,

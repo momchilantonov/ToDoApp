@@ -19,11 +19,13 @@ class CreateTodoForm(forms.ModelForm):
                 attrs={
                     'class': 'form-control',
                     'placeholder': 'Enter description',
+                    'rows': 3,
+                    'style':'resize:none',
                 }
             ),
             'state': forms.CheckboxInput(
                 attrs={
-                    'class': "form-control"
+                    'class': "form-check"
                 }
             ),
             'due_date': forms.DateInput(
@@ -34,7 +36,7 @@ class CreateTodoForm(forms.ModelForm):
             ),
             'responsible_person': forms.Select(
                 attrs={
-                    'calss': 'forms-control',
+                    'class': 'form-control',
                 }
             ),
             'category': forms.Select(
@@ -44,7 +46,7 @@ class CreateTodoForm(forms.ModelForm):
             ),
             'priority': forms.Select(
                 attrs={
-                    'class': 'forms-control',
+                    'class': 'form-control',
                 }
             )
 
