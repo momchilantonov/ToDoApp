@@ -2,43 +2,52 @@
 {% block title %}Today's tasks{% endblock %}
 
 {% block content %}
-</br>
-<center><h3><b>Today's tasks</b></h3></center>
     {% if todos %}
         {% for todo in todos %}
-            <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                                <div class="card">
-                                    <center><u><b>{{form.title}}</b></u></center>
-                                    <hr/>
-                                    <b>Description:</b></br>{{ form.description }}
-                                    <hr/>
-                                    <b>Responsible:</b></br>{{ form.responsible_person }}
-                                    <hr/>
-                                    <b>Category:</b></br>{{ form.category }}
-                                    <hr/>
-                                    <b>Priority:</b></br>{{ form.priority }}
-                                    <hr/>
-                                    <b>Due Date:</b></br>{{ form.due_date }}
-                                    <hr/>
-                                    {% if form.state %}
-                                        <b>Status:</b></br>Done
-                                    {% else %}
-                                        <b>Status:</b></br>Not Done
-                                    {% endif %}
-                                </div>
-                        </div>
-                    </div> 
+            {% if todo.state %}
+                <div class="card border-success mb-3" style="max-width: 40rem; margin: 0 auto; margin-top: 20px;">
+                    <div class="card-header" style="text-align: center;">{{ todo.title }}</div>
+                    <div class="card-body">
+                        <b class="card-text">Description:</b>
+                        <p class="card-text">{{ todo.description }}</p>
+                        <b class="card-text">Responsible for the task:</b>
+                        <p class="card-text">{{ todo.responsible_person }}</p>
+                        <b class="card-text">Category:</b>
+                        <p class="card-text">{{ todo.category }}</p>
+                        <b class="card-text">Priority:</b>
+                        <p class="card-text">{{ todo.priority }}</p>
+                        <b class="card-text">Due Date:</b>
+                        <p class="card-text">{{ todo.due_date }}</p>
+                        <b class="card-text">Status:</b>
+                        <p class="card-text">Done</p>
+                    </div>
                 </div>
-            </div>
+            {% else %}
+                <div class="card border-danger mb-3" style="max-width: 40rem; margin: 0 auto; margin-top: 20px;">
+                    <div class="card-header" style="text-align: center;">{{ todo.title }}</div>
+                    <div class="card-body">
+                        <b class="card-text">Description:</b>
+                        <p class="card-text">{{ todo.description }}</p>
+                        <b class="card-text">Responsible for the task:</b>
+                        <p class="card-text">{{ todo.responsible_person }}</p>
+                        <b class="card-text">Category:</b>
+                        <p class="card-text">{{ todo.category }}</p>
+                        <b class="card-text">Priority:</b>
+                        <p class="card-text">{{ todo.priority }}</p>
+                        <b class="card-text">Due Date:</b>
+                        <p class="card-text">{{ todo.due_date }}</p>
+                        <b class="card-text">Status:</b>
+                        <p class="card-text">Not Done</p>
+                    </div>
+                </div>
+            {% endif %}
         {% endfor %}
     {% else %}
-        <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                    <div class="card">
-                        <center><h5>No tasks for today!</br>Create new task?</h5></center>
-                        <a class="page-link" href="#"> + Add New</a>
+        <div class="alert alert-dismissible alert-warning" style="max-width: 30rem; margin: 0 auto; margin-top: 20px;">
+            <h4 class="alert-heading" style="text-align: center; margin-left: 70px;">No tasks for today!</h4>
+            <a href="{% url 'create_todo' %}">
+                <button type="button" class="btn btn-warning" style="margin-left: 120px; margin-top: 10px;">Create new task</button>
+            </a>
+        </div>
     {% endif %}
 {% endblock %}
