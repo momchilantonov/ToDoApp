@@ -89,12 +89,12 @@ def edit_todo(req, pk):
         form = CreateTodoForm(
             initial=todo.__dict__,
         )
-        temp = 'edit.html'
+        temp = 'edit_todo.html'
         return show_todo_form(req, form, temp)
     form = CreateTodoForm(
         req.POST,
         instance=todo,
     )
-    red = 'edit'
-    temp = 'edit.html'
+    red = index
+    temp = 'edit_todo.html'
     return save_new_todo(req, form, red, temp)

@@ -45,10 +45,10 @@
                         <p class="card-text">{{ todo.due_date }}</p>
                         <b class="card-text">Status:</b>
                         <p class="card-text">Not Done</p>
-                        <a href="{% url 'edit_todo' edit_todo.pk %}">
+                        <a href="{% url 'edit_todo' %}">
                             <button type="button" class="btn btn-info" style="margin-left: 120px; margin-top: 10px;">Edit task</button>
                         </a>
-                        <a href="{% url 'edit_todo' edit_todo.pk %}">
+                        <a href="{% url 'edit_todo' %}">
                             <button type="button" class="btn btn-primary" style="margin-left: 120px; margin-top: 10px;">Delete task</button>
                         </a>
                     </div>
