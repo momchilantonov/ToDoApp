@@ -13,7 +13,7 @@ class CreateTodoForm(forms.ModelForm):
                 attrs={
                     'class': 'form-control',
                     'placeholder': 'Enter title',
-                    'style': 'color: #0066ff',
+                    'style': 'color: #15151e;',
                 }
             ),
             'description': forms.Textarea(
@@ -21,38 +21,38 @@ class CreateTodoForm(forms.ModelForm):
                     'class': 'form-control',
                     'placeholder': 'Enter description',
                     'rows': 3,
-                    'style':'resize:none; color: #0066ff',
+                    'style':'resize:none; color: #15151e;',
                 }
             ),
             'state': forms.CheckboxInput(
                 attrs={
                     'class': "form-check",
-                    'style': 'color: #0066ff',
+                    'style': 'color: #15151e;',
                 }
             ),
             'due_date': forms.DateTimeInput(
                 attrs={
                     'class': 'form-control',
                     'type': 'datetime-local',
-                    'style': 'color: #0066ff',
+                    'style': 'color: #15151e;',
                 }
             ),
             'responsible_person': forms.Select(
                 attrs={
                     'class': 'form-select',
-                    'style': 'color: #0066ff'
+                    'style': 'color: #15151e;'
                 },
             ),
             'category': forms.Select(
                 attrs={
                     'class': 'form-select',
-                    'style': 'color: #0066ff',
+                    'style': 'color: #15151e;;',
                 }
             ),
             'priority': forms.RadioSelect(
                 attrs={
                     'class': 'form-radio',
-                    'style': 'color: #0066ff',
+                    'style': 'color: #15151e;',
                 }
             )
 

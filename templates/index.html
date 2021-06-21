@@ -6,62 +6,56 @@
     {% if todos %}
         {% for todo in todos %}
             {% if todo.state %}
-                <div class="card border-success mb-3" style="max-width: 40rem; margin: 0 auto; margin-top: 20px;">
-                    <div class="card-header" style="text-align: center;">{{ todo.title }}</div>
-                    <div class="card-body">
-                        <b class="card-text">Description:</b>
-                        <p class="card-text">{{ todo.description }}</p>
-                        <b class="card-text">Responsible for the task:</b>
-                        <p class="card-text">{{ todo.responsible_person }}</p>
-                        <b class="card-text">Category:</b>
-                        <p class="card-text">{{ todo.category }}</p>
-                        <b class="card-text">Priority:</b>
-                        <p class="card-text">{{ todo.priority }}</p>
-                        <b class="card-text">Due Date:</b>
-                        <p class="card-text">{{ todo.due_date }}</p>
-                        <b class="card-text">Status:</b>
-                        <p class="card-text">Done</p>
-                        <a href="{% url 'edit_todo' %}">
-                            <button type="button" class="btn btn-info" style="margin-left: 120px; margin-top: 10px;">Edit task</button>
-                        </a>
-                        <a href="{% url 'edit_todo' %}">
-                            <button type="button" class="btn btn-primary" style="margin-left: 120px; margin-top: 10px;">Delete task</button>
-                        </a>
+                <form method="POST">
+                    <div class="card border-success mb-3" style="max-width: 40rem; margin: 0 auto; margin-top: 20px;">
+                        <div class="card-header" style="text-align: center;">{{ todo.title }}</div>
+                        <div class="card-body">
+                            <b class="card-text">Description:</b>
+                            <p class="card-text">{{ todo.description }}</p>
+                            <b class="card-text">Responsible for the task:</b>
+                            <p class="card-text">{{ todo.responsible_person }}</p>
+                            <b class="card-text">Category:</b>
+                            <p class="card-text">{{ todo.category }}</p>
+                            <b class="card-text">Priority:</b>
+                            <p class="card-text">{{ todo.priority }}</p>
+                            <b class="card-text">Due Date:</b>
+                            <p class="card-text">{{ todo.due_date }}</p>
+                            <b class="card-text">Status:</b>
+                            <p class="card-text">Done</p>
+                            <a href="{% url 'update_todo' todo.id %}" class="btn btn-info" style="width: 120px; height: 50px; margin-left: 120px; margin-top: 10px;">Edit task</a>
+                        </div>
                     </div>
-                </div>
+                </form>
             {% else %}
-                <div class="card border-danger mb-3" style="max-width: 40rem; margin: 0 auto; margin-top: 20px;">
-                    <div class="card-header" style="text-align: center;">{{ todo.title }}</div>
-                    <div class="card-body">
-                        <b class="card-text">Description:</b>
-                        <p class="card-text">{{ todo.description }}</p>
-                        <b class="card-text">Responsible for the task:</b>
-                        <p class="card-text">{{ todo.responsible_person }}</p>
-                        <b class="card-text">Category:</b>
-                        <p class="card-text">{{ todo.category }}</p>
-                        <b class="card-text">Priority:</b>
-                        <p class="card-text">{{ todo.priority }}</p>
-                        <b class="card-text">Due Date:</b>
-                        <p class="card-text">{{ todo.due_date }}</p>
-                        <b class="card-text">Status:</b>
-                        <p class="card-text">Not Done</p>
-                        <a href="{% url 'edit_todo' %}">
-                            <button type="button" class="btn btn-info" style="margin-left: 120px; margin-top: 10px;">Edit task</button>
-                        </a>
-                        <a href="{% url 'edit_todo' %}">
-                            <button type="button" class="btn btn-primary" style="margin-left: 120px; margin-top: 10px;">Delete task</button>
-                        </a>
+                <form method="POST">
+                    <div class="card border-danger mb-3" style="max-width: 40rem; margin: 0 auto; margin-top: 20px;">
+                        <div class="card-header" style="text-align: center;">{{ todo.title }}</div>
+                        <div class="card-body">
+                            <b class="card-text">Description:</b>
+                            <p class="card-text">{{ todo.description }}</p>
+                            <b class="card-text">Responsible for the task:</b>
+                            <p class="card-text">{{ todo.responsible_person }}</p>
+                            <b class="card-text">Category:</b>
+                            <p class="card-text">{{ todo.category }}</p>
+                            <b class="card-text">Priority:</b>
+                            <p class="card-text">{{ todo.priority }}</p>
+                            <b class="card-text">Due Date:</b>
+                            <p class="card-text">{{ todo.due_date }}</p> 
+                            <b class="card-text">Status:</b>
+                            <p class="card-text">Not Done</p>
+                            <a href="{% url 'update_todo' todo.id %}" class="btn btn-info" style="width: 120px; height: 50px; margin-left: 120px; margin-top: 10px;">Edit task</a>
+                        </div>
                     </div>
-                </div>
+                </form>
             {% endif %}
         {% endfor %}
     {% else %}
-        <div class="alert alert-dismissible alert-warning" style="max-width: 30rem; margin: 0 auto; margin-top: 20px;">
-            <h4 class="alert-heading" style="text-align: center; margin-left: 70px;">No tasks for today!</h4>
-            <a href="{% url 'create_todo' %}">
-                <button type="button" class="btn btn-warning" style="margin-left: 120px; margin-top: 10px;">Create new task</button>
-            </a>
-        </div>
+        <form method="POST">
+            <div class="alert alert-dismissible alert-warning" style="max-width: 30rem; margin: 0 auto; margin-top: 20px;">
+                <h4 class="alert-heading" style="text-align: center; margin-left: 70px;">No tasks for today!</h4>
+                <a href="{% url 'update_todo' todo.id %}" class="btn btn-warning" style="margin-left: 120px; margin-top: 10px;">Create new task</a>
+            </div>
+        </form>
     {% endif %}
     {% endblock %}
 {% endblock %}

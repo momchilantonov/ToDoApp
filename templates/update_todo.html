@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}Create or Edit task{% endblock %}
+{% block title %}Edit task{% endblock %}
 
 {% block content %} 
     
     <div class="card text-white bg-secondary mb-3" style="max-width: 40rem; margin: 0 auto; margin-top: 20px;">
-        <div class="card-header" style="color: #fff; margin: 0 auto; font-size: 30px;">Create new task</div>
+        <div class="card-header" style="color: #fff; margin: 0 auto; font-size: 30px;" >Edit task</div>
         <div class="card-body">
             <div class="form-group">
                 <form method="POST">
@@ -13,17 +13,17 @@
                     {{ form.title }}
                     <b class="card-text" style="color: #fff;">{{ form.description.label }}:</b>
                     {{ form.description }}
-                    <b class="card-text" style="color: #fff;">{{ form.responsible_person.label }}:</b>
+                    <b class="card-text" style="color: #fff">{{ form.responsible_person.label }}:</b>
                     {{ form.responsible_person }}
                     <b class="card-text" style="color: #fff;">{{ form.category.label }}:</b>
                     {{ form.category }}
-                    <b class="card-text" style="color: #fff;">{{ form.priority.label }}:</b>
+                    <b class="card-text" style="color: #fff">{{ form.priority.label }}:</b>
                     {{ form.priority }}
                     <b class="card-text" style="color: #fff;">{{ form.due_date.label }}:</b>
                     {{ form.due_date }}
                     <b class="card-text" style="color: #fff;">{{ form.state.label }}:</b>
                     {{ form.state }}
-                    <button type="submit" class="btn btn-success" style="width: 100px; height: 50px; margin: 0 auto; display: block;">Create</button>
+                    <button type="submit" class="btn btn-success" style="width: 100px; height: 50px; margin: 0 auto; display: block;">Edit</button>
                     </br>
                     <center>
                         <a href="{% url 'index' %}" class="btn btn-info" style="width: 100px; height: 50px; display:flexbox;">Cancel</a>

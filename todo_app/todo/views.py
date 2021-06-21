@@ -14,10 +14,10 @@ def show_todo_form(req, form, temp):
 
 
 # Save new created todo with POST request
-def save_new_todo(req, form, red, temp):
+def save_todo(req, form, temp):
     if form.is_valid():
         form.save()
-        return redirect(red)
+        return redirect('index')
     # If its not valid, return old form
     return show_todo_form(req, form, temp)
 
@@ -33,68 +33,56 @@ end_time = make_aware(naive_datetime)
 def index(req):
     todos = Todo.objects.filter(
         due_date__gte=current_time, due_date__lte=end_time)
-    temp = "index.html"
     context = {
         "todos": todos,
     }
-    return render(req, temp, context)
+    return render(req, "index.html", context)
 
 
 # Show all todos
 def show_all_todos(req):
     todos = Todo.objects.all()
-    temp = 'show_all.html'
     context = {
         'todos': todos
     }
-    return render(req, temp, context)
+    return render(req, 'show_all.html', context)
 
 
 # Show all not done todos
 def show_not_done_todos(req):
     todos = Todo.objects.filter(state=False)
-    temp = 'show_not_done.html'
     context = {
         'todos': todos
     }
-    return render(req, temp, context)
+    return render(req, 'show_not_done.html', context)
 
 
 # Show all done todos
 def show_done_todos(req):
     todos = Todo.objects.filter(state=True)
-    temp = 'show_done.html'
     context = {
         'todos': todos
     }
-    return render(req, temp, context)
+    return render(req, 'show_done.html', context)
 
 
-# Create new todo form
+# Create new todo
 def create_todo(req):
     if req.method == 'GET':
         form = CreateTodoForm()
-        temp = 'create_todo.html'
-        return show_todo_form(req, form, temp)
+        return show_todo_form(req, form, 'create_todo.html')
     form = CreateTodoForm(req.POST)
-    red = 'index'
-    temp = "index.html"
-    return save_new_todo(req, form, red, temp)
+    return save_todo(req, form, "index.html")
 
 
-# Edit existing todo
-def edit_todo(req, pk):
+# Edit exist todo
+def update_todo(req, pk):
     todo = Todo.objects.get(pk=pk)
-    if req.method == "GET":
-        form = CreateTodoForm(
-            initial=todo.__dict__,
-        )
-        temp = 'edit_todo.html'
-        return show_todo_form(req, form, temp)
+    if req.method == 'GET':
+        form = CreateTodoForm()
+        return show_todo_form(req, form, 'update_todo.html')
     form = CreateTodoForm(
         req.POST,
         instance=todo,
     )
-    red = index
-    temp = 'edit_todo.html'
-    return save_new_todo(req, form, red, temp)
+    return save_todo(req, form, 'update_todo.html')
