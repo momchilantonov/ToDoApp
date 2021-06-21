@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Today's tasks{% endblock %}
+{% block title %}Show tasks{% endblock %}
 
 {% block content %}
+    {% block index %}
     {% if todos %}
         {% for todo in todos %}
             {% if todo.state %}
@@ -20,6 +21,12 @@
                         <p class="card-text">{{ todo.due_date }}</p>
                         <b class="card-text">Status:</b>
                         <p class="card-text">Done</p>
+                        <a href="{% url 'edit_todo' %}">
+                            <button type="button" class="btn btn-info" style="margin-left: 120px; margin-top: 10px;">Edit task</button>
+                        </a>
+                        <a href="{% url 'edit_todo' %}">
+                            <button type="button" class="btn btn-primary" style="margin-left: 120px; margin-top: 10px;">Delete task</button>
+                        </a>
                     </div>
                 </div>
             {% else %}
@@ -38,6 +45,12 @@
                         <p class="card-text">{{ todo.due_date }}</p>
                         <b class="card-text">Status:</b>
                         <p class="card-text">Not Done</p>
+                        <a href="{% url 'edit_todo' edit_todo.pk %}">
+                            <button type="button" class="btn btn-info" style="margin-left: 120px; margin-top: 10px;">Edit task</button>
+                        </a>
+                        <a href="{% url 'edit_todo' edit_todo.pk %}">
+                            <button type="button" class="btn btn-primary" style="margin-left: 120px; margin-top: 10px;">Delete task</button>
+                        </a>
                     </div>
                 </div>
             {% endif %}
@@ -50,4 +63,5 @@
             </a>
         </div>
     {% endif %}
+    {% endblock %}
 {% endblock %}

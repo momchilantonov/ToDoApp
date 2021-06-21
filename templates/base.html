@@ -19,13 +19,13 @@
             <a class="nav-link" href="{% url 'index' %}">Today's tasks</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">All tasks</a>
+            <a class="nav-link" href="{% url 'show_all' %}">All tasks</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Done tasks</a>
+            <a class="nav-link" href="{% url 'show_done' %}">Done tasks</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Not Done tasks</a>
+            <a class="nav-link" href="{% url 'show_not_done' %}">Not Done tasks</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'create_todo' %}">Create task</a>

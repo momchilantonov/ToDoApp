@@ -40,6 +40,36 @@ def index(req):
     return render(req, temp, context)
 
 
+# Show all todos
+def show_all_todos(req):
+    todos = Todo.objects.all()
+    temp = 'show_all.html'
+    context = {
+        'todos': todos
+    }
+    return render(req, temp, context)
+
+
+# Show all not done todos
+def show_not_done_todos(req):
+    todos = Todo.objects.filter(state=False)
+    temp = 'show_not_done.html'
+    context = {
+        'todos': todos
+    }
+    return render(req, temp, context)
+
+
+# Show all done todos
+def show_done_todos(req):
+    todos = Todo.objects.filter(state=True)
+    temp = 'show_done.html'
+    context = {
+        'todos': todos
+    }
+    return render(req, temp, context)
+
+
 # Create new todo form
 def create_todo(req):
     if req.method == 'GET':
@@ -47,6 +77,24 @@ def create_todo(req):
         temp = 'create_todo.html'
         return show_todo_form(req, form, temp)
     form = CreateTodoForm(req.POST)
-    red = "index"
+    red = 'index'
     temp = "index.html"
+    return save_new_todo(req, form, red, temp)
+
+
+# Edit existing todo
+def edit_todo(req, pk):
+    todo = Todo.objects.get(pk=pk)
+    if req.method == "GET":
+        form = CreateTodoForm(
+            initial=todo.__dict__,
+        )
+        temp = 'edit.html'
+        return show_todo_form(req, form, temp)
+    form = CreateTodoForm(
+        req.POST,
+        instance=todo,
+    )
+    red = 'edit'
+    temp = 'edit.html'
     return save_new_todo(req, form, red, temp)

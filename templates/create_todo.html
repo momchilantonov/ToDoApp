@@ -1,29 +1,32 @@
 {% extends 'base.html' %}
-{% block title %}Create new task{% endblock %}
+{% block title %}Create/Edit task{% endblock %}
 
 {% block content %} 
-    <form method="POST">
-        {% csrf_token %}
-        <div class="card text-white bg-secondary mb-3" style="max-width: 40rem; margin: 0 auto; margin-top: 20px;">
-            <div class="card-header">Create new task</div>
-            <div class="card-body">
-                <div class="form-group">
-                        <b class="card-text">{{ form.title.label }}:</b>
-                        <p class="card-text">{{ form.title }}</p>
-                        <b class="card-text">{{ form.description.label }}:</b>
-                        <p class="card-text">{{ form.description }}</p>
-                        <b class="card-text">{{ form.responsible_person.label }}:</b>
-                        <p class="card-text">{{ form.responsible_person }}</p>
-                        <b class="card-text">{{ form.category.label }}:</b>
-                        <p class="card-text">{{ form.category }}</p>
-                        <b class="card-text">{{ form.priority.label }}:</b>
-                        <p class="card-text">{{ form.priority }}</p>
-                        <b class="card-text">{{ form.due_date.label }}:</b>
-                        <p class="card-text">{{ form.due_date }}</p>
-                        <b class="card-text">{{ form.state.label }}:</b>
-                        <p class="card-text">{{ form.state }}</p>
-                </div>
+    
+    <div class="card text-white bg-secondary mb-3" style="max-width: 40rem; margin: 0 auto; margin-top: 20px;">
+        <div class="card-header" style="color:#ffcc00;" >Create new task</div>
+        <div class="card-body">
+            <div class="form-group">
+                <form method="POST">
+                {% csrf_token %}
+                    <b class="card-text" style="color: #cc00ff;">{{ form.title.label }}:</b>
+                    {{ form.title }}
+                    <b class="card-text" style="color: #cc00ff;">{{ form.description.label }}:</b>
+                    {{ form.description }}
+                    <b class="card-text" style="color: #cc00ff;">{{ form.responsible_person.label }}:</b>
+                    {{ form.responsible_person }}
+                    <b class="card-text" style="color: #cc00ff;">{{ form.category.label }}:</b>
+                    {{ form.category }}
+                    <b class="card-text" style="color: #cc00ff;">{{ form.priority.label }}:</b>
+                    {{ form.priority }}
+                    <b class="card-text" style="color: #cc00ff;">{{ form.due_date.label }}:</b>
+                    {{ form.due_date }}
+                    <b class="card-text" style="color: #cc00ff;">{{ form.state.label }}:</b>
+                    {{ form.state }}
+                    <button type="submit" class="btn btn-success" style="margin: 0 auto; display: block;">Create</button>
+                </form>
             </div>
         </div>
-    </form>
+    </div>
+    
 {% endblock %}
