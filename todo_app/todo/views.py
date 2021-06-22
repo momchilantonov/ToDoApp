@@ -5,6 +5,11 @@ from datetime import datetime
 from todo_app.todo.models.todo import Todo
 
 
+# Get todo id
+def get_id(pk):
+    return Todo.objects.get(pk=pk)
+
+
 # return form from GET request
 def show_todo_form(req, form, temp):
     context = {
@@ -77,12 +82,22 @@ def create_todo(req):
 
 # Edit exist todo
 def update_todo(req, pk):
-    todo = Todo.objects.get(pk=pk)
+    todo = get_id(pk)
     if req.method == 'GET':
-        form = CreateTodoForm()
+        form = CreateTodoForm(initial=todo.__dict__)
         return show_todo_form(req, form, 'update_todo.html')
     form = CreateTodoForm(
         req.POST,
         instance=todo,
     )
     return save_todo(req, form, 'update_todo.html')
+
+
+# Delete rxist todo with confirm popup
+def delete_todo(req, pk):
+    todo = get_id(pk)
+    if req.method == "GET":
+        form = CreateTodoForm()
+        return show_todo_form(req, form, 'delete_todo.html')
+    todo.delete()
+    return redirect('index')
