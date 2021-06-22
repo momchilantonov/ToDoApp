@@ -20,8 +20,8 @@
                             <p class="card-text">{{ todo.due_date }}</p>
                             <b class="card-text">Status:</b>
                             <p class="card-text">Done</p>
-                            <a href="{% url 'update_todo' todo.id %}" class="btn btn-info" style="width: 120px; height: 50px; margin-left: 120px; margin-top: 10px;">Edit task</a>
-                            <a href="{% url 'delete_todo' todo.id %}" class="btn btn-primary" style="width: 120px; height: 50px; margin-left: 120px; margin-top: 10px;">Delete task</a>
+                            <a href="{% url 'update_todo' todo.id %}" class="btn btn-info" style="width: 140px; height: 50px; margin-left: 100px; margin-top: 10px;">Edit task</a>
+                            <a href="{% url 'delete_todo' todo.id %}" class="btn btn-primary" style="width: 140px; height: 50px; margin-left: 100px; margin-top: 10px;">Delete task</a>
                         </div>
                     </div>
             {% else %}
@@ -40,8 +40,8 @@
                             <p class="card-text">{{ todo.due_date }}</p> 
                             <b class="card-text">Status:</b>
                             <p class="card-text">Not Done</p>
-                            <a href="{% url 'update_todo' todo.id %}" class="btn btn-info" style="width: 120px; height: 50px; margin-left: 120px; margin-top: 10px;">Edit task</a>
-                            <a href="{% url 'delete_todo' todo.id %}" class="btn btn-primary" style="width: 120px; height: 50px; margin-left: 120px; margin-top: 10px;">Delete task</a>
+                            <a href="{% url 'update_todo' todo.id %}" class="btn btn-info" style="width: 140px; height: 50px; margin-left: 100px; margin-top: 10px;">Edit task</a>
+                            <a href="{% url 'delete_todo' todo.id %}" class="btn btn-primary" style="width: 140px; height: 50px; margin-left: 100px; margin-top: 10px;">Delete task</a>
                         </div>
                     </div>
             {% endif %}

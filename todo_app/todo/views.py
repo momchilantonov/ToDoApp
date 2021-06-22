@@ -97,7 +97,7 @@ def update_todo(req, pk):
 def delete_todo(req, pk):
     todo = get_id(pk)
     if req.method == "GET":
-        form = CreateTodoForm()
-        return show_todo_form(req, form, 'delete_todo.html')
+        # form = CreateTodoForm(instance=todo)
+        return show_todo_form(req, todo, 'delete_todo.html')
     todo.delete()
     return redirect('index')
