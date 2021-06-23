@@ -8,13 +8,13 @@
     />
     <title>{% block title %} {% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'quartz.css' %}" />
+    <link rel="stylesheet" href="{% static 'quartz.min.css' %}" />
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto">
-          <legend>TODOS APP</legend>
+          <h5 style="padding-top: 8px; margin-left: 10px; margin-right: 10px;">TODOS APP</h5>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'index' %}">Today's tasks</a>
           </li>
